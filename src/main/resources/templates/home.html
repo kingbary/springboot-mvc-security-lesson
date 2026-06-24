@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kingbary Company home page</title>
@@ -7,6 +7,22 @@
 <body>
 <h2>Kingbary Company home page</h2>
 <p>Welcome to Kingbary company homepage</p>
+
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br><br>
+    Roles: <span sec:authentication="principal.authorities"></span>
+</p>
+<hr>
+<p>
+    <a th:href="@{/leaders}">Leadership Meeting</a>
+    (Only for Manager peeps)
+</p>
+<p>
+    <a th:href="@{/systems}">IT System Meeting</a>
+    (Only for Admin peeps)
+</p>
+<hr>
 <form action="#" th:action="@{/logout}" method="post">
     <input type="submit" value="Logout">
 </form>
