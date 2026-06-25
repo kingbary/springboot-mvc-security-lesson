@@ -14,11 +14,11 @@
     Roles: <span sec:authentication="principal.authorities"></span>
 </p>
 <hr>
-<p>
+<p sec:authorize="${hasRole('MANAGER')}">
     <a th:href="@{/leaders}">Leadership Meeting</a>
     (Only for Manager peeps)
 </p>
-<p>
+<p sec:authorize="${hasRole('ADMIN')}">
     <a th:href="@{/systems}">IT System Meeting</a>
     (Only for Admin peeps)
 </p>

@@ -43,7 +43,11 @@ public class DemoSecurityConfig {
                                 .requestMatchers("/").hasRole("EMPLOYEE")
                                 .requestMatchers("/leaders/**").hasRole("MANAGER")
                                 .requestMatchers("/systems/**").hasRole("ADMIN")
-                                .anyRequest().authenticated())
+                                .anyRequest().authenticated()
+                )
+                .exceptionHandling(configurer ->
+                        configurer
+                                .accessDeniedPage("/access-denied"))
                 .formLogin(form -> form
                         .loginPage("/showLoginPage")
                         .loginProcessingUrl("/authenticateTheUser")
